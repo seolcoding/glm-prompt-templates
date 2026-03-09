@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "sources": [
+    {
+      "id": "src-001",
+      "title": "Product Hunt - AI Tools Category",
+      "type": "platform",
+      "url": "https://producthunt.com/categories/artificial-intelligence",
+      "accessed_at": "2026-03-10T00:39:00Z",
+      "key_claims": ["AI 프롬프트 도구의 높은 관심", "지속적인 신규 출시"],
+      "confidence": "high",
+      "applicability": "idea-001",
+      "compliance_notes": "공개 데이터, 로봇 없이 수동 확인"
+    },
+    {
+      "id": "src-002",
+      "title": "Notion Template Gallery",
+      "type": "platform",
+      "url": "https://notion.so/templates",
+      "accessed_at": "2026-03-10T00:39:00Z",
+      "key_claims": ["템플릿 마켓플레이스 활성화", "다양한 가격대"],
+      "confidence": "high",
+      "applicability": "idea-002",
+      "compliance_notes": "공개 페이지"
+    },
+    {
+      "id": "src-003",
+      "title": "LinkedIn Sales Navigator Features",
+      "type": "official_docs",
+      "url": "https://business.linkedin.com/sales-solutions",
+      "accessed_at": "2026-03-10T00:39:00Z",
+      "key_claims": ["이메일 자동화 수요", "개인화된 아웃리치 중요성"],
+      "confidence": "medium",
+      "applicability": "idea-003",
+      "compliance_notes": "공식 문서"
+    }
+  ]
+}

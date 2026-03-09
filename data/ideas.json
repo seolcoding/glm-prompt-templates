@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "ideas": [
+    {
+      "id": "idea-001",
+      "title": "AI 프롬프트 엔지니어링 템플릿 팩",
+      "problem_statement": "비개발자와 비즈니스 사용자가 효과적인 AI 프롬프트를 작성하는 데 어려움을 겪음",
+      "buyer_persona": "AI 도구를 사용하지만 프롬프트 최적화 방법을 모르는 개발자, 마케터, 콘텐츠 크리에이터",
+      "urgency": "high",
+      "existing_alternatives": ["PromptBase", "FlowGPT", "OpenAI Cookbook"],
+      "willingness_to_pay_hypothesis": "월 $9-29 구독 또는 $49 일회성 구매",
+      "acquisition_channels": ["SEO", "Twitter/LinkedIn", "Product Hunt"],
+      "risk_notes": ["경쟁 심화", "무료 대안 존재"],
+      "evidence_references": ["Product Hunt의 AI 도구 카테고리 성장", "GitHub 프롬프트 저장소 인기"],
+      "scores": {
+        "demand": 4,
+        "speed": 5,
+        "effort": 2,
+        "defensibility": 2,
+        "compliance": 5
+      },
+      "status": "pending",
+      "created_at": "2026-03-10T00:39:00Z"
+    },
+    {
+      "id": "idea-002",
+      "title": "Notion 생산성 템플릿 번들",
+      "problem_statement": "Notion 사용자가 효율적인 워크플로우를 구축하는 데 시간이 오래 걸림",
+      "buyer_persona": "프리랜서, 스타트업 창업자, 학생",
+      "urgency": "medium",
+      "existing_alternatives": ["Notion Template Gallery", "Easlo", "Grid"],
+      "willingness_to_pay_hypothesis": "$19-49 일회성 구매",
+      "acquisition_channels": ["Notion Community", "Reddit r/Notion", "Product Hunt"],
+      "risk_notes": ["Notion 플랫폼 의존성", "복제 용이"],
+      "evidence_references": ["Notion 템플릿 마켓플레이스 트래픽", "Easlo 성장 사례"],
+      "scores": {
+        "demand": 4,
+        "speed": 4,
+        "effort": 2,
+        "defensibility": 1,
+        "compliance": 5
+      },
+      "status": "pending",
+      "created_at": "2026-03-10T00:39:00Z"
+    },
+    {
+      "id": "idea-003",
+      "title": "이메일 코스 작성 도구",
+      "problem_statement": "마케터와 세일즈팀이 개인화된 콜드 이메일을 작성하는 데 시간이 많이 소요됨",
+      "buyer_persona": "B2B 세일즈 담당자, 마케터, 리크루터",
+      "urgency": "high",
+      "existing_alternatives": ["Lavender", "Regie", "SmartWriter"],
+      "willingness_to_pay_hypothesis": "월 $29-99 구독",
+      "acquisition_channels": ["LinkedIn", "Product Hunt", "SEO"],
+      "risk_notes": ["AI 생성 콘텐츠 품질 이슈", "플랫폼 ToS"],
+      "evidence_references": ["Lavender 성장률", "이메일 자동화 도구 시장 규모"],
+      "scores": {
+        "demand": 5,
+        "speed": 3,
+        "effort": 3,
+        "defensibility": 2,
+        "compliance": 4
+      },
+      "status": "pending",
+      "created_at": "2026-03-10T00:39:00Z"
+    }
+  ]
+}

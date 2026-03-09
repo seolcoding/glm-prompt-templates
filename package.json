@@ -1,0 +1,18 @@
+{
+  "name": "glm-make-money",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx ts-node apps/api/server.ts",
+    "web": "npx serve apps/web",
+    "test": "vitest run tests/"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "serve": "^14.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  }
+}

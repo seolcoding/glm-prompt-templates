@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "events": {
+    "page_view": {
+      "description": "페이지 조회 이벤트",
+      "properties": {
+        "visitor_id": "string",
+        "page_url": "string",
+        "referrer": "string?",
+        "timestamp": "string",
+        "experiment_id": "string?",
+        "variant": "string?"
+      }
+    },
+    "opt_in": {
+      "description": "이메일/리드 캡처",
+      "properties": {
+        "visitor_id": "string",
+        "email": "string",
+        "source": "string",
+        "timestamp": "string",
+        "experiment_id": "string?"
+      }
+    },
+    "checkout_initiated": {
+      "description": "결제 시작",
+      "properties": {
+        "visitor_id": "string",
+        "offer_id": "string",
+        "amount_cents": "number",
+        "currency": "string",
+        "timestamp": "string"
+      }
+    },
+    "purchase_completed": {
+      "description": "결제 완료",
+      "properties": {
+        "visitor_id": "string",
+        "offer_id": "string",
+        "amount_cents": "number",
+        "currency": "string",
+        "payment_method": "string",
+        "timestamp": "string"
+      }
+    }
+  },
+  "entities": {
+    "idea": {
+      "id": "string",
+      "title": "string",
+      "status": "pending | testing | launched | archived",
+      "scores": {
+        "demand": "number (1-5)",
+        "speed": "number (1-5)",
+        "effort": "number (1-5)",
+        "defensibility": "number (1-5)",
+        "compliance": "number (1-5)"
+      }
+    },
+    "offer": {
+      "id": "string",
+      "idea_id": "string",
+      "type": "free | low_ticket | core | upsell | subscription",
+      "price_cents": "number",
+      "status": "draft | active | paused | archived"
+    },
+    "experiment": {
+      "id": "string",
+      "hypothesis": "string",
+      "metric": "string",
+      "success_threshold": "number",
+      "status": "planned | running | completed | failed"
+    }
+  }
+}

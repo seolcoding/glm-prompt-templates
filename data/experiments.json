@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "experiments": [
+    {
+      "id": "exp-001",
+      "idea_id": "idea-001",
+      "offer_id": "offer-001",
+      "title": "무료 리드 마그닛 전환 테스트",
+      "hypothesis": "프롬프트 체크리스트 PDF가 5% 옵트인율 달성",
+      "metric": "opt_in_rate = emails_captured / page_visitors",
+      "success_threshold": 0.05,
+      "sample_proxy": "200 방문자",
+      "stop_condition": "200 방문 후 2% 미만",
+      "risk_level": "low",
+      "implementation_complexity": "low",
+      "next_action_if_win": "유료 오퍼 테스트 시작",
+      "next_action_if_lose": "리드 마그닛 변경 (체크리스트 → 템플릿 샘플)",
+      "status": "planned",
+      "created_at": "2026-03-10T00:46:00Z"
+    },
+    {
+      "id": "exp-002",
+      "idea_id": "idea-001",
+      "offer_id": "offer-001",
+      "title": "랜딩 페이지 트래픽 검증",
+      "hypothesis": "간단한 SEO로 주간 100 방문 달성 가능",
+      "metric": "weekly_visitors",
+      "success_threshold": 100,
+      "sample_proxy": "7일간",
+      "stop_condition": "7일 후 50 미만",
+      "risk_level": "low",
+      "implementation_complexity": "low",
+      "next_action_if_win": "exp-001 이메일 캡처 추가",
+      "next_action_if_lose": "다른 트래픽 소스 시도 (커뮤니티)",
+      "status": "planned",
+      "created_at": "2026-03-10T00:46:00Z"
+    },
+    {
+      "id": "exp-003",
+      "idea_id": "idea-002",
+      "title": "Notion 템플릿 수요 검증",
+      "hypothesis": "Notion 커뮤니티에서 50 방문/주 달성",
+      "metric": "weekly_visitors",
+      "success_threshold": 50,
+      "sample_proxy": "7일간",
+      "stop_condition": "14일 후 30 미만",
+      "risk_level": "low",
+      "implementation_complexity": "low",
+      "next_action_if_win": "Notion 템플릿 오퍼 생성",
+      "next_action_if_lose": "다른 아이디어 우선",
+      "status": "planned",
+      "created_at": "2026-03-10T00:46:00Z"
+    }
+  ]
+}

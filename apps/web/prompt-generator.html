@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 프롬프트 생성기 - 무료 도구</title>
+  <meta name="description" content="무료 AI 프롬프트 생성 도구. 원하는 작업을 선택하면 최적화된 프롬프트를 자동 생성합니다.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    h1 { text-align: center; color: white; margin-bottom: 1.5rem; }
+    h2 { color: #1a1a2e; margin-bottom: 1rem; }
+    label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: #333; }
+    select, input, textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    select:focus, input:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+    }
+    button:hover { opacity: 0.9; }
+    .result {
+      background: #f8fafc;
+      border-left: 4px solid #667eea;
+      padding: 1.5rem;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      font-family: monospace;
+      display: none;
+    }
+    .copy-btn {
+      background: #10b981;
+      margin-top: 1rem;
+    }
+    .share {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .share a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.9rem;
+    }
+    .twitter { background: #1da1f2; }
+    .linkedin { background: #0077b5; }
+    .kakao { background: #fee500; color: #000; }
+    footer { text-align: center; color: white; margin-top: 2rem; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 AI 프롬프트 생성기</h1>
+
+    <div class="card">
+      <h2>📝 프롬프트 설정</h2>
+
+      <label for="task">작업 유형</label>
+      <label for="task">작업 유형</label>
+      <select id="task">
+        <option value="blog">블로그 포스트 작성</option>
+        <option value="email">이메일 캠페인</option>
+        <option value="social">소셜 미디어 캡션</option>
+        <option value="code">코드 리뷰</option>
+        <option value="summary">요약/정리</option>
+        <option value="marketing">마케팅 카피</option>
+        <option value="seo">SEO 최적화</option>
+      </select>
+
+      <label for="topic">주제/제품</label>
+      <input type="text" id="topic" placeholder="예: AI 생산성 도구, 온라인 강의, 신제품 출시">
+
+      <label for="target">타겟 독자</label>
+      <input type="text" id="target" placeholder="예: 30대 직장인, 마케터, 개발자">
+
+      <label for="tone">톤</label>
+      <select id="tone">
+        <option value="professional">전문적</option>
+        <option value="friendly">친근함</option>
+        <option value="humorous">유머러스</option>
+        <option value="formal">격식있는</option>
+      </select>
+
+      <label for="length">길이</label>
+      <select id="length">
+        <option value="short">짧음 (500자)</option>
+        <option value="medium" selected>중간 (1,500자)</option>
+        <option value="long">김 (3,000자)</option>
+      </select>
+
+      <button onclick="generatePrompt()">🚀 프롬프트 생성</button>
+
+      <div class="result" id="result"></div>
+      <button class="copy-btn" id="copyBtn" style="display:none" onclick="copyPrompt()">📋 복사하기</button>
+
+      <div class="share" id="share" style="display:none">
+        <p style="margin-bottom: 0.5rem; color: #666;">공유하기:</p>
+        <a href="#" class="twitter" id="twitterShare" target="_blank">트위터</a>
+        <a href="#" class="linkedin" id="linkedinShare" target="_blank">링크드인</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>💡 사용 팁</h2>
+      <ul style="padding-left: 1.5rem; color: #666;">
+        <li>구체적인 주제를 입력할수록 좋은 결과를 얻습니다</li>
+        <li>타겟 독자를 명확히 하면 더 적합한 톤으로 작성됩니다</li>
+        <li>생성된 프롬프트를 필요에 맞게 수정해서 사용하세요</li>
+      </ul>
+    </div>
+
+    <div class="card" style="text-align: center;">
+      <h2>🎁 더 많은 프롬프트 필요하신가요?</h2>
+      <p style="margin: 1rem 0; color: #666;">50개 전체 템플릿 팩을 확인하세요</p>
+      <a href="https://glmmakemoney.vercel.app" style="display: inline-block; background: #1a1a2e; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">전체 템플릿 보기 →</a>
+    </div>
+
+    <footer>
+      <p>© 2026 AI 프롬프트 템플릿 | <a href="https://glmmakemoney.vercel.app" style="color: white;">홈페이지</a></p>
+    </footer>
+  </div>
+
+  <script>
+    const templates = {
+      blog: `당신은 10년 경력의 콘텐츠 마케터입니다.
+
+[TOPIC]에 대한 [LENGTH] 블로그 포스트를 작성해주세요.
+
+**타겟 독자**: [TARGET]
+**톤**: [TONE]
+
+**구조**:
+1. 흥미로운 도입부 (문제 제기)
+2. 본문 (해결책 3-5개)
+3. 결론 (요약 + CTA)
+
+**요구사항**:
+- SEO 최적화
+- 가독성 높은 문단 구분
+- 실용적인 예시 포함`,
+
+      email: `당신은 이메일 마케팅 전문가입니다.
+
+[TOPIC]를 홍보하는 3단계 이메일 시퀀스를 작성해주세요.
+
+**타겟**: [TARGET]
+**톤**: [TONE]
+
+**이메일 1 - 인지 단계**:
+- 문제 제기
+- 공감 유도
+- (200자 이내)
+
+**이메일 2 - 고려 단계**:
+- 해결책 제시
+- 혜택 강조
+- (200자 이내)
+
+**이메일 3 - 행동 단계**:
+- 긴급성 부여
+- 명확한 CTA
+- (200자 이내)`,
+
+      social: `당신은 소셜 미디어 전문가입니다.
+
+[TOPIC]에 대한 소셜 미디어 캡션을 3가지 버전으로 작성해주세요.
+
+**타겟**: [TARGET]
+**톤**: [TONE]
+
+**버전 A - 스토리텔링**:
+(개인적 경험 중심, 150자 이내)
+
+**버전 B - 교육적**:
+(가치 팁 중심, 150자 이내)
+
+**버전 C - 직접 CTA**:
+(명확한 행동 유도, 150자 이내)
+
+각 버전에 해시태그 5개씩 포함하세요.`,
+
+      code: `당신은 시니어 소프트웨어 엔지니어입니다.
+
+다음 코드를 철저히 리뷰해주세요:
+
+\`\`\`
+[코드를 여기에 붙여넣으세요]
+\`\`\`
+
+**리뷰 항목**:
+1. 🐛 버그 가능성
+2. ⚡ 성능 최적화
+3. 🔒 보안 이슈
+4. 📝 코드 스타일
+5. 🔧 개선 제안
+
+각 항목별로 구체적인 피드백과 수정 코드 예시를 제공하세요.`,
+
+      summary: `당신은 정보 분석 전문가입니다.
+
+다음 내용을 명확하고 간결하게 요약해주세요:
+
+[요약할 내용을 여기에 붙여넣으세요]
+
+**요약 형식**:
+1. 핵심 요약 (3문장)
+2. 주요 포인트 (불렛 5개)
+3. 실행 가능한 인사이트 (3개)
+4. 추천 후속 행동
+
+[TONE] 톤으로 작성해주세요.`,
+
+      marketing: `당신은 크리에이티브 카피라이터입니다.
+
+[TOPIC]를 위한 마케팅 카피를 작성해주세요.
+
+**타겟**: [TARGET]
+**톤**: [TONE]
+**플랫폼**: 랜딩 페이지
+
+**필요한 요소**:
+1. 헤드라인 (클릭 유도)
+2. 서브헤드라인 (가치 제안)
+3. 핵심 혜택 3가지
+4. 사회적 증거 (후기 스타일)
+5. CTA 버튼 텍스트 2가지
+
+A/B 테스트를 위해 2개 버전으로 작성하세요.`,
+
+      seo: `당신은 SEO 전문가입니다.
+
+[TOPIC]에 대한 SEO 최적화 콘텐츠를 작성해주세요.
+
+**타겟 키워드**: [TARGET]
+
+**필요한 항목**:
+1. **Title 태그** (60자 이내, 키워드 포함)
+2. **Meta Description** (160자 이내, 클릭 유도)
+3. **H1 태그** (명확하고 간결)
+4. **핵심 키워드 5개** (관련성 높은 순)
+5. **LSI 키워드 10개** (관련 검색어)
+6. **콘텐츠 구조 제안** (H2, H3 태그 포함)
+
+검색엔진 상위 노출을 위한 팁도 함께 제공하세요.`
+    };
+
+    function generatePrompt() {
+      const task = document.getElementById('task').value;
+      const topic = document.getElementById('topic').value || '[주제]';
+      const target = document.getElementById('target').value || '[타겟 독자]';
+      const tone = document.getElementById('tone').value;
+      const lengthSelect = document.getElementById('length').value;
+      const lengths = { short: '500자', medium: '1,500자', long: '3,000자' };
+
+      let prompt = templates[task]
+        .replace(/\[TOPIC\]/g, topic)
+        .replace(/\[TARGET\]/g, target)
+        .replace(/\[TONE\]/g, tone === 'professional' ? '전문적인' : tone === 'friendly' ? '친근한' : tone === 'humorous' ? '유머러스한' : '격식있는')
+        .replace(/\[LENGTH\]/g, lengths[lengthSelect]);
+
+      document.getElementById('result').textContent = prompt;
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('copyBtn').style.display = 'block';
+      document.getElementById('share').style.display = 'block';
+
+      // 공유 링크 설정
+      const text = encodeURIComponent(`🤖 AI 프롬프트 생성기로 "${topic}" 프롬프트를 만들었어요!\n\n`);
+      const url = encodeURIComponent('https://glmmakemoney.vercel.app/prompt-generator.html');
+      document.getElementById('twitterShare').href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+      document.getElementById('linkedinShare').href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById('result').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = '✅ 복사됨!';
+        setTimeout(() => btn.textContent = '📋 복사하기', 2000);
+      });
+    }
+  </script>
+</body>
+</html>

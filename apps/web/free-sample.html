@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>무료 프롬프트 샘플 - AI 프롬프트 템플릿</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.8; max-width: 800px; margin: 0 auto; padding: 2rem; background: #fafafa; }
+    .header { text-align: center; margin-bottom: 2rem; }
+    .header h1 { font-size: 2rem; color: #1a1a2e; margin-bottom: 0.5rem; }
+    .header p { color: #666; }
+    .card { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .card h2 { color: #667eea; margin-bottom: 1rem; font-size: 1.25rem; }
+    .prompt-box { background: #f8fafc; border-left: 4px solid #667eea; padding: 1rem 1.5rem; margin: 1rem 0; font-family: monospace; white-space: pre-wrap; }
+    .tip { background: #f0f9ff; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+    .tip::before { content: "💡 팁: "; font-weight: bold; color: #0066cc; }
+    .cta { text-align: center; margin: 2rem 0; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white; }
+    .cta h3 { margin-bottom: 0.5rem; }
+    .cta p { opacity: 0.9; margin-bottom: 1rem; }
+    .cta a { display: inline-block; background: white; color: #667eea; padding: 0.75rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; }
+    .download-btn { display: inline-block; background: #10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; margin-top: 1rem; }
+    .copy-btn { background: #667eea; color: white; border: none; padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer; font-size: 0.85rem; margin-left: 0.5rem; }
+    .copy-btn:hover { background: #5a67d8; }
+    .footer { text-align: center; color: #999; margin-top: 2rem; font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎁 무료 프롬프트 샘플</h1>
+    <p>바로 복사해서 사용할 수 있는 5가지 필수 프롬프트</p>
+  </div>
+
+  <div class="card">
+    <h2>1️⃣ 블로그 포스트 작성 프롬프트</h2>
+    <p>1,500자 블로그 포스트를 자동으로 작성합니다.</p>
+    <div class="prompt-box" id="prompt1">당신은 10년 경력의 콘텐츠 마케터입니다.
+
+[주제]에 대한 1,500자 블로그 포스트를 작성해주세요.
+
+**타겟 독자**: [구체적 타겟]
+**톤**: [전문적/친근함]
+
+**구조**:
+1. 흥미로운 도입부
+2. 문제 제기
+3. 해결책 3가지
+4. 실전 예시
+5. 결론 및 CTA</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt1')">📋 복사</button>
+  </div>
+
+  <div class="card">
+    <h2>2️⃣ 이메일 캠페인 프롬프트</h2>
+    <p>3단계 이메일 시퀀스를 자동 생성합니다.</p>
+    <div class="prompt-box" id="prompt2">당신은 이메일 마케팅 전문가입니다.
+
+[제품명]을 홍보하는 3개 이메일 시퀀스를 작성해주세요.
+
+**이메일 1 - 인지**: 문제 제기, 공감 유도 (200자)
+**이메일 2 - 고려**: 해결책 제시, 가치 강조 (300자)
+**이메일 3 - 행동**: 긴급성, CTA, 할인 (200자)
+
+각 이메일에 적절한 제목도 포함해주세요.</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt2')">📋 복사</button>
+  </div>
+
+  <div class="card">
+    <h2>3️⃣ SEO 메타 데이터 프롬프트</h2>
+    <p>검색엔진 최적화된 메타 데이터를 생성합니다.</p>
+    <div class="prompt-box" id="prompt3">당신은 SEO 전문가입니다.
+
+[페이지 주제]에 대한 SEO 최적화 메타 데이터를 작성해주세요.
+
+**Title**: 60자 이내, 키워드 포함, 클릭 유도
+**Meta Description**: 160자 이내, 가치 제안, CTA
+**H1 태그**: 명확하고 간결한 제목
+
+각각 3가지 옵션을 제시하고 가장 좋은 것을 추천해주세요.</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt3')">📋 복사</button>
+  </div>
+
+  <div class="card">
+    <h2>4️⃣ 소셜 미디어 캡션 프롬프트</h2>
+    <p>인스타그램/링크드인용 캡션을 3가지 버전으로 생성합니다.</p>
+    <div class="prompt-box" id="prompt4">당신은 소셜 미디어 전문가입니다.
+
+[제품/서비스]에 대한 소셜 미디어 캡션을 작성해주세요.
+
+**버전 A - 스토리텔링**: 개인적 경험 기반
+**버전 B - 교육적**: 가치 팁 중심
+**버전 C - 직접 CTA**: 명확한 행동 유도
+
+각 버전은 150자 이내로, 적절한 해시태그 5개를 포함하세요.</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt4')">📋 복사</button>
+  </div>
+
+  <div class="card">
+    <h2>5️⃣ 코드 리뷰 프롬프트</h2>
+    <p>전문적인 코드 리뷰를 자동으로 수행합니다.</p>
+    <div class="prompt-box" id="prompt5">당신은 시니어 소프트웨어 엔지니어입니다.
+
+다음 코드를 리뷰해주세요:
+
+```
+[코드 붙여넣기]
+```
+
+**리뷰 항목**:
+1. 버그 가능성
+2. 성능 최적화
+3. 보안 이슈
+4. 코드 스타일
+5. 개선 제안
+
+각 항목별로 구체적인 피드백과 수정 제안을 주세요.</div>
+    <button class="copy-btn" onclick="copyPrompt('prompt5')">📋 복사</button>
+  </div>
+
+  <div class="tip">
+    이 프롬프트들을 [대괄호] 안의 내용만 수정하면 바로 사용할 수 있습니다!
+  </div>
+
+  <div class="cta">
+    <h3>🚀 50개 전체 템플릿 받기</h3>
+    <p>더 많은 프롬프트가 필요하신가요? 전체 팩을 구매하세요.</p>
+    <a href="https://glmmakemoney.vercel.app">전체 템플릿 보기 →</a>
+  </div>
+
+  <div class="card" style="text-align: center;">
+    <h2>📄 이 페이지 저장하기</h2>
+    <p>나중에 다시 사용할 수 있도록 이 페이지를 저장하세요.</p>
+    <button class="download-btn" onclick="window.print()">🖨️ PDF로 저장</button>
+    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #666;">Ctrl+P (또는 ⌘+P) → "PDF로 저장" 선택</p>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 AI 프롬프트 템플릿 | <a href="https://glmmakemoney.vercel.app">메인 페이지</a></p>
+  </div>
+
+  <script>
+    function copyPrompt(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = event.target;
+        const original = btn.innerText;
+        btn.innerText = '✅ 복사됨!';
+        setTimeout(() => btn.innerText = original, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

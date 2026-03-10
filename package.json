@@ -6,13 +6,22 @@
   "scripts": {
     "dev": "npx ts-node apps/api/server.ts",
     "web": "npx serve apps/web",
-    "test": "vitest run tests/"
+    "test": "vitest run tests/",
+    "scheduler": "npx tsx cli/scheduler-cli.ts",
+    "generate": "npx tsx cli/scheduler-cli.ts generate",
+    "schedule:daily": "npx tsx cli/scheduler-cli.ts schedule",
+    "schedule:run": "npx tsx cli/scheduler-cli.ts run",
+    "schedule:status": "npx tsx cli/scheduler-cli.ts status"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
     "serve": "^14.0.0",
     "ts-node": "^10.9.0",
+    "tsx": "^4.0.0",
     "typescript": "^5.0.0",
     "vitest": "^1.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
   }
 }
